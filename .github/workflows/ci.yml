@@ -1,0 +1,39 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  rust:
+    name: example
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      GH_ACTIONS: 1
+
+    steps:
+      - name: clone repository
+        uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Setup rust-cache
+        uses: Swatinem/rust-cache@v1
+
+      - name: Install deno
+        uses: denoland/setup-deno@v1.0.0
+        with:
+          deno-version: 1.x
+
+      - name: Check fmt
+        if: contains(matrix.os, 'ubuntu')
+        run: deno fmt --check && cargo fmt -- --check
+
+      - name: Test
+        run: deno test --allow-read=.
+
+        # This is used to ensure that the Rust source doesn't get
+        # out of sync with the generated wasmbuild output
+      - name: Check Wasm up-to-date
+        run: deno task wasmbuild --check
