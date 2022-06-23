@@ -28,10 +28,14 @@ jobs:
 
       - name: Check fmt
         if: contains(matrix.os, 'ubuntu')
-        run: deno fmt --check && cargo fmt -- --check
+        run: |
+          deno fmt --check
+          cargo fmt -- --check
 
       - name: Test
-        run: deno test --allow-read=.
+        run: |
+          deno test --allow-read=.
+          cargo test
 
         # This is used to ensure that the Rust source doesn't get
         # out of sync with the generated wasmbuild output
