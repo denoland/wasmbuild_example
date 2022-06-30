@@ -1,5 +1,8 @@
 # wasmbuild - Example
 
+This repo contains an example of using
+[wasmbuild](https://github.com/denoland/wasmbuild).
+
 Main files:
 
 - `rs_lib/src/lib.rs` - Rust source code.
