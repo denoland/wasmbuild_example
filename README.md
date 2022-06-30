@@ -8,8 +8,9 @@ Main files:
   the Wasm file.
 - `main.js` - Module that shows an example of using `lib/rs_lib.generated.js`.
 
-After making edits to `rs_lib/src/lib.rs`, run `deno task wasmbuild` to recreate
-the `lib/rs_lib_bg.wasm` and `lib/rs_lib.generated.js` files.
+After making edits to any of the Rust code, you can rebuild by running
+`deno task wasmbuild`. This will recreate the `lib/rs_lib_bg.wasm` and
+`lib/rs_lib.generated.js` files.
 
 ## Deno
 
