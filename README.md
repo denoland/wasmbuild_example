@@ -37,3 +37,12 @@ Listening on http://localhost:4507/
 
 Then navigate to the link shown and open the browser console. You should see `3`
 logged to the console.
+
+## Deno Deploy
+
+See this playground that imports from this repo:
+https://dash.deno.com/playground/wasmbuild-example
+
+Generally with Deno deploy, you would want to use
+[Git integration](https://deno.com/deploy/docs/projects#git-integration) to
+Deploy this code though.
